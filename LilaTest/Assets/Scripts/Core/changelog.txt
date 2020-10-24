@@ -1,0 +1,39 @@
+v0.1
+Asset Management
++ Resources folder management and loading
+
+Command
++ Command
++ EventCommand
++ InitializableCommand
++ UiCommands
+
+DataProviders
++ SceneReferenceProvider
++ UiDataProvider
+
+DataTypes
++ Priority
++ RangedValue
+
+GameEventManager
+
+GameLoopObserver
+
+GameStateMachine
++ BaseGameState
++ GameStateController
+
+InputAdapter
+
+IoC
++ Dependency Injection
++ Lifecycle Management
+
+Random
++ Random Utils
++ Shuffle Bag
+
+Ui Core
+
+Miscellaneous utils
