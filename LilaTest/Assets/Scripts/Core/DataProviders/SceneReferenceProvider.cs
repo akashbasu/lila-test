@@ -21,7 +21,7 @@ namespace Core.DataProviders
         }
     }
 
-    internal interface ISceneReferenceProvider : IPostConstructable
+    internal interface ISceneReferenceProvider : ILifecycleManaged
     {
         bool TryGetEntry(string tag, out GameObject go);
     }
@@ -32,7 +32,7 @@ namespace Core.DataProviders
         
         [SerializeField] private List<DirectoryEntry> _cachedEntries = new List<DirectoryEntry>();
 
-        public void PostConstruct(params object[] args)
+        public void PostConstruct()
         {
             _directory.Clear();
             

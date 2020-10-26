@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Core.UI.StateControl
 {
-    internal interface IUiStateController : IPostConstructable {}
+    internal interface IUiStateController : ILifecycleManaged {}
     
     internal class UiStateController : IUiStateController
     {
@@ -20,7 +20,7 @@ namespace Core.UI.StateControl
 
         private Dictionary<string, List<GameObject>> _gameStateToUiMap;
         
-        public void PostConstruct(params object[] args)
+        public void PostConstruct()
         {
             if (GetReferences())
             {

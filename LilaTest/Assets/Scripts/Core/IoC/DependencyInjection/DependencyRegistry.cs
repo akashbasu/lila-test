@@ -28,7 +28,7 @@ namespace Core.IoC
 
             Injector.ResolveDependencies(newDependency);
             
-            if (newDependency.instance is IPostConstructable postConstructable) postConstructable.PostConstruct();
+            if (newDependency.instance is ILifecycleManaged postConstructable) postConstructable.PostConstruct();
         }
         
         private static void AddToRegistry<TImplementation>() where TImplementation : class
@@ -41,7 +41,7 @@ namespace Core.IoC
 
             Injector.ResolveDependencies(newDependency);
             
-            if (newDependency.instance is IPostConstructable postConstructable) postConstructable.PostConstruct();
+            if (newDependency.instance is ILifecycleManaged postConstructable) postConstructable.PostConstruct();
         }
 
         public static void Reset()

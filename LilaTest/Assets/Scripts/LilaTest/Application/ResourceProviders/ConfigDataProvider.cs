@@ -16,7 +16,7 @@ namespace LilaTest
         
         public ApplicationConfig Config => _data[Index];
         
-        public override void PostConstruct(params object[] args)
+        public override void PostConstruct()
         {
             LoadData();
         }

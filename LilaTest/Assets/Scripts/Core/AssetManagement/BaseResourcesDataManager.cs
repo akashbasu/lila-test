@@ -5,12 +5,12 @@ using Object = UnityEngine.Object;
 
 namespace Core.AssetManagement
 {
-    internal abstract class BaseResourcesDataManager<TData> : IPostConstructable where TData : Object
+    internal abstract class BaseResourcesDataManager<TData> : ILifecycleManaged where TData : Object
     {
         protected TData[] _data;
         protected abstract string DataPath { get; }
 
-        public virtual void PostConstruct(params object[] args)
+        public virtual void PostConstruct()
         {
             var resourceLoader = new ResourcesLoader<TData>(DataPath);
             if (!resourceLoader.TryLoadData(out _data))
