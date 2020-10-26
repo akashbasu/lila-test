@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridDimensions:
     _row: 5
-    _column: 3
+    _column: 5
   _generateRandomSeed: 1
   _deterministicSeed: 0
-  _areaOfInterest: 1
+  _areaOfInterest: 2
