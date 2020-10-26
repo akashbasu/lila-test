@@ -2,6 +2,7 @@ using System;
 using Core.EventSystems;
 using Core.IoC;
 using Core.UI.Framework;
+using Core.UI.Models;
 
 namespace LilaTest
 {
@@ -13,7 +14,7 @@ namespace LilaTest
         [Dependency] private readonly IConfigResourceProvider _configResourceProvider;
 
         private GridModel _gridModel;
-        private GridCoordinate _currentSelection;
+        private GridCoordinate _currentSelection = new GridCoordinate(-1, -1);
 
         public void Initialize(Action<IInitializable> onComplete = null)
         {
@@ -33,7 +34,8 @@ namespace LilaTest
 
         private void CreateGridModel()
         {
-            _gridModel = new GridModel("Grid", _gridDataManager.Data);
+            _uiDataRegistry.UpdateModel(new StringModel(UiKeys.Application.AoE, _configResourceProvider.Config.AreaOfInterest.ToString()));
+            _gridModel = new GridModel(UiKeys.Grid.GridModel, _gridDataManager.Data);
             _uiDataRegistry.UpdateModel(_gridModel);
         }
 
