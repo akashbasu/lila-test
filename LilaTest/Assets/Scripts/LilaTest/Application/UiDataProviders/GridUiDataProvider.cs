@@ -25,6 +25,12 @@ namespace LilaTest
             onComplete?.Invoke(this);
         }
 
+        ~GridUiDataProvider()
+        {
+            _gameEventManager?.Unsubscribe(ApplicationEvents.Grid.OnSelect, OnSelect);
+            _gameEventManager?.Unsubscribe(ApplicationEvents.Grid.Reset, OnReset);
+        }
+
         private void CreateGridModel()
         {
             _gridModel = new GridModel("Grid", _gridDataManager.Data);
@@ -34,6 +40,7 @@ namespace LilaTest
         private void SubscribeToEvents()
         {
             _gameEventManager.Subscribe(ApplicationEvents.Grid.OnSelect, OnSelect);
+            _gameEventManager.Subscribe(ApplicationEvents.Grid.Reset, OnReset);
         }
 
         private void OnSelect(object[] args)
@@ -45,6 +52,11 @@ namespace LilaTest
             if(Equals(_currentSelection, coordinate)) return;
             
             ActivateForSelectedQuad(coordinate);
+        }
+        
+        private void OnReset(object[] args)
+        {
+            _gridModel.DeactivateActiveElements();
         }
 
         private void ActivateForSelectedQuad(GridCoordinate coordinate)

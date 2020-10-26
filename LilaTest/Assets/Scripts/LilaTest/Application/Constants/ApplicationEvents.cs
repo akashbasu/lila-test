@@ -11,6 +11,7 @@ namespace LilaTest
         internal class Grid
         {
             public static readonly string OnSelect = $"{nameof(Grid)}.{nameof(OnSelect)}";
+            public static readonly string Reset = $"{nameof(Grid)}.{nameof(Reset)}";
         }
     }
 }
