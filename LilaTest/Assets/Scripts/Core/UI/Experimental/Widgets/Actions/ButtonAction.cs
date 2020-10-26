@@ -3,10 +3,10 @@ using Core.IoC;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Core.Ui
+namespace Core.Ui.Binders
 {
     [RequireComponent(typeof(Button))]
-    internal class ButtonWidget : MonoBehaviour
+    internal class ButtonAction : MonoBehaviour
     {
         [SerializeField] private string _onClickEvent;
 
