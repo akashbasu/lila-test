@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ApplicationConfig
   m_EditorClassIdentifier: 
   _gridDimensions:
-    _row: 5
-    _column: 5
+    _row: 10
+    _column: 10
   _generateRandomSeed: 1
   _deterministicSeed: 0
   _areaOfInterest: 2
