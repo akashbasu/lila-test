@@ -1,4 +1,5 @@
 using Core.DataTypes;
+using UnityEngine;
 
 namespace Core.Random
 {
@@ -9,6 +10,7 @@ namespace Core.Random
         double NextNormalized();
         int Next(IntRangedValue val);
         bool NextBool(float normalizedProbability);
+        Color NextColor();
     }
     
     internal class RandomUtils : IRandomUtils
@@ -20,6 +22,7 @@ namespace Core.Random
         public double NextNormalized() => _random.NextDouble();
         public int Next(IntRangedValue val) => _random.Next(val.Min, val.Max);
         public bool NextBool(float normalizedProbability) => NextNormalized() <= normalizedProbability;
+        public Color NextColor() => new Color(_random.Next(0, 256), _random.Next(0, 256), _random.Next(0, 256), _random.Next(0, 256));
 
         public RandomUtils(int seed)
         {

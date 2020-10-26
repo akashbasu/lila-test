@@ -46,7 +46,7 @@ namespace Core.IoC
 
         public static void Reset()
         {
-            foreach (var registeredDependency in Registry) if (registeredDependency.Value.instance is IPostConstructable postConstructable) postConstructable.Dispose();
+            foreach (var registeredDependency in Registry) if (registeredDependency.Value.instance is IDisposable disposable) disposable.Dispose();
         }
     }
 

@@ -9,17 +9,18 @@ namespace Core.GameStateMachine
     {
         private readonly Queue<IInitializable> _steps = new Queue<IInitializable>();
 
-        protected abstract void AddOneTimeStates();
+        protected abstract void EnqueueOneTimeStates(Queue<IInitializable> steps);
         
-        protected abstract void AddGameStates();
+        protected abstract void EnqueueLoopableStates(Queue<IInitializable> steps);
         
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
             
             _steps.Clear();
-            AddOneTimeStates();
-            AddGameStates();
+
+            EnqueueOneTimeStates(_steps);
+            EnqueueLoopableStates(_steps);
             
             NextState();
         }
@@ -31,7 +32,7 @@ namespace Core.GameStateMachine
 
         private void NextState()
         {
-            if(_steps.Count == 0) AddGameStates();
+            if(_steps.Count == 0) EnqueueLoopableStates(_steps);
             ProcessState(_steps.Peek());
        }
 
