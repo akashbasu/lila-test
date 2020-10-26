@@ -22,7 +22,7 @@ namespace Core.UI.Binders
 
         protected override void OnModelUpdated()
         {
-            if(_label.text == BoundModel.Value) return;
+            if(BoundModel == null || _label.text == BoundModel.Value) return;
             
             _label.text = !string.IsNullOrWhiteSpace(_format) ? string.Format(_format, BoundModel.Value) : BoundModel.Value;
         }
