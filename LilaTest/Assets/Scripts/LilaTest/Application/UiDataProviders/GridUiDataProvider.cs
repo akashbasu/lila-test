@@ -5,7 +5,7 @@ using Core.UI.Framework;
 
 namespace LilaTest
 {
-    internal class GridUiDataProvider : IInitializable
+    internal class GridUiDataProvider : IInitializable, IDisposable
     {
         [Dependency] private readonly IGameEventManager _gameEventManager;
         [Dependency] private readonly IUiDataRegistry _uiDataRegistry;
@@ -25,7 +25,7 @@ namespace LilaTest
             onComplete?.Invoke(this);
         }
 
-        ~GridUiDataProvider()
+        public void Dispose()
         {
             _gameEventManager?.Unsubscribe(ApplicationEvents.Grid.OnSelect, OnSelect);
             _gameEventManager?.Unsubscribe(ApplicationEvents.Grid.Reset, OnReset);
