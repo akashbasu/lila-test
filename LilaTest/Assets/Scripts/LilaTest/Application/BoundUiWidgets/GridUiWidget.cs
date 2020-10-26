@@ -78,7 +78,7 @@ namespace LilaTest
         private void SetLayout()
         {
             _layout.constraint = BoundModel.Constraint;
-            _layout.constraintCount = BoundModel.Column;
+            _layout.constraintCount = BoundModel.Columns;
         }
 
         private bool NeedsCachePadding() => BoundModel.GridCount > ManagedCount;

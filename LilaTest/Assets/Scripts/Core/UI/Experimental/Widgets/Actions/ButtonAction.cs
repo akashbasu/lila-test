@@ -1,5 +1,6 @@
-using Core.EventSystems;
+using Core.Command;
 using Core.IoC;
+using Core.UI.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,14 @@ namespace Core.Ui.Binders
     internal class ButtonAction : MonoBehaviour
     {
         [SerializeField] private string _onClickEvent;
-
-        [Dependency] private readonly IGameEventManager _gameEventManager;
         
+        private IBoundComponent _data;
         private Button _button;
 
         private void Awake()
         {
             _button = GetComponent<Button>();
+            _data = GetComponent<IBoundComponent>();
         }
 
         private void Start()
@@ -37,8 +38,9 @@ namespace Core.Ui.Binders
         private void OnButtonClick()
         {
             if(string.IsNullOrEmpty(_onClickEvent)) return;
-            
-            _gameEventManager.Broadcast(_onClickEvent);
+
+            if (_data == null) new EventCommand(_onClickEvent).Execute();
+            else new EventCommand(_onClickEvent, _data.FullKey).Execute();
         }
     }
 }

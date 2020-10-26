@@ -22,5 +22,10 @@ namespace Core.UI.Models
             model.OverrideKey($"{Key}.{model.Key}");
             _dataRegistry.UpdateModel(model);
         }
+
+        protected void UpdateSubModel(IBoundModel model)
+        {
+            _dataRegistry.UpdateModel(model);
+        }
     }
 }

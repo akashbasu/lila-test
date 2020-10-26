@@ -15,7 +15,7 @@ namespace LilaTest
         
 
         [Header("Interaction Controls")] 
-        [SerializeField] private int _areaOfInterest = 1;
+        [SerializeField] private uint _areaOfInterest = 1;
 
         [UnityEditor.MenuItem("Assets/Create/Application Config")]
         public static void CreateConfig()
@@ -33,7 +33,7 @@ namespace LilaTest
         public int Seed => _generateRandomSeed ? GetRandomSeed() : _deterministicSeed;
         
         //Interaction
-        public int AreaOfInterest => _areaOfInterest;
+        public uint AreaOfInterest => _areaOfInterest;
         
         private int GetRandomSeed() => (int) (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
     }
